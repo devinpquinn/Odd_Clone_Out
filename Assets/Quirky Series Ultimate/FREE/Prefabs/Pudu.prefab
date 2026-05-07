@@ -204,6 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3161298468613301832}
   - component: {fileID: 6147876873679586677}
+  - component: {fileID: 2952259911013253608}
   m_Layer: 0
   m_Name: Pudu
   m_TagString: Untagged
@@ -250,6 +251,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2952259911013253608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5279811246306103102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a35bf8f3033a8439e78a5eec3655c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaggerAnimation
+  clipName: Idle_A
 --- !u!1 &5512041106863543837
 GameObject:
   m_ObjectHideFlags: 0
