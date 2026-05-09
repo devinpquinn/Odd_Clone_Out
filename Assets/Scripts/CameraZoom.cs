@@ -49,9 +49,9 @@ public class CameraZoom : MonoBehaviour
                 .SetEase(zoomEase);
         }
 
-        if (_isZoomed)
+        if (_isZoomed && (_zoomTween == null || !_zoomTween.IsActive()))
         {
-            // Kill any transition tween and directly lerp for smooth mouse panning
+            // Zoom-in transition complete — lerp to follow the mouse
             if (_moveTween != null && _moveTween.IsActive())
                 _moveTween.Kill();
             targetCamera.transform.position = Vector3.Lerp(
