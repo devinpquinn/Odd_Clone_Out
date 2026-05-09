@@ -418,7 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelController
   platform: {fileID: 1335439482}
   rotationDuration: 0.5
-  rotationEase: 7
+  rotationEase: 28
 --- !u!4 &374604869
 Transform:
   m_ObjectHideFlags: 0
