@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraZoom : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class CameraZoom : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             _isZoomed = true;
             _zoomTween?.Kill();
@@ -38,7 +39,7 @@ public class CameraZoom : MonoBehaviour
                 .DOMove(ClampedPanTarget(), zoomDuration)
                 .SetEase(zoomEase);
         }
-        else if (Input.GetMouseButtonUp(1))
+        else if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
             _isZoomed = false;
             _zoomTween?.Kill();
@@ -71,8 +72,9 @@ public class CameraZoom : MonoBehaviour
         float maxOffsetX = Mathf.Max(0f, (_defaultSize - zoomedSize) * aspect);
         float maxOffsetY = Mathf.Max(0f, _defaultSize - zoomedSize);
 
-        float nx = Input.mousePosition.x / Screen.width  - 0.5f;  // -0.5 .. 0.5
-        float ny = Input.mousePosition.y / Screen.height - 0.5f;
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        float nx = mousePos.x / Screen.width  - 0.5f;  // -0.5 .. 0.5
+        float ny = mousePos.y / Screen.height - 0.5f;
 
         float offsetX = Mathf.Clamp(nx * 2f * maxOffsetX, -maxOffsetX, maxOffsetX);
         float offsetY = Mathf.Clamp(ny * 2f * maxOffsetY, -maxOffsetY, maxOffsetY);
