@@ -54,7 +54,6 @@ Assets/Quirky Series Ultimate/_Scripts/
  QuirkySeriesDemo.cs
  RotateOnScroll.cs
 Assets/Scripts/
- CameraZoom.cs
  LevelController.cs
  StaggerAnimation.cs
 Assets/TutorialInfo/Scripts/Readme.cs
