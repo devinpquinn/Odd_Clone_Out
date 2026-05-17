@@ -17,7 +17,7 @@ public class CreatureSpawner : MonoBehaviour
         {
             float yAngle = Random.Range(0, 4) * 90f;
             Quaternion rotation = spawnPoint.rotation * Quaternion.Euler(0f, yAngle, 0f);
-            Instantiate(creaturePrefab, spawnPoint.position, rotation);
+            Instantiate(creaturePrefab, spawnPoint.position, rotation, spawnPoint);
         }
     }
 }
