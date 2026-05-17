@@ -407,7 +407,7 @@ MonoBehaviour:
   - {fileID: 1259112827}
   referenceSpawnPoint: {fileID: 1256411021}
   creaturePrefab: {fileID: 5279811246306103102, guid: 0fe95cb5b0955ca49984ade707cf1f07, type: 3}
-  deviantPrefab: {fileID: 5279811246306103102, guid: 0fe95cb5b0955ca49984ade707cf1f07, type: 3}
+  deviantPrefab: {fileID: 6842458599697738422, guid: e18a8a4ed1f506444b51c96eda6d9b37, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

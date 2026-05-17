@@ -19,14 +19,16 @@ public class CreatureSpawner : MonoBehaviour
 
         float referenceYAngle = Random.Range(0, 4) * 90f;
         Quaternion referenceRotation = referenceSpawnPoint.rotation * Quaternion.Euler(0f, referenceYAngle, 0f);
-        Instantiate(creaturePrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
+        GameObject reference = Instantiate(creaturePrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
+        reference.name = creaturePrefab.name;
 
         foreach (Transform spawnPoint in spawnPoints)
         {
             float yAngle = Random.Range(0, 4) * 90f;
             Quaternion rotation = spawnPoint.rotation * Quaternion.Euler(0f, yAngle, 0f);
             GameObject prefab = (spawnPoint == deviantSpawnPoint) ? deviantPrefab : creaturePrefab;
-            Instantiate(prefab, spawnPoint.position, rotation, spawnPoint);
+            GameObject creature = Instantiate(prefab, spawnPoint.position, rotation, spawnPoint);
+            creature.name = prefab.name;
         }
     }
 }
