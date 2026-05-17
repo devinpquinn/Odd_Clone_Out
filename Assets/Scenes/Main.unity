@@ -401,12 +401,13 @@ MonoBehaviour:
   - {fileID: 1915084525}
   - {fileID: 716079771}
   - {fileID: 154840942}
-  - {fileID: 1256411021}
   - {fileID: 691615874}
   - {fileID: 837918488}
   - {fileID: 1003808942}
   - {fileID: 1259112827}
+  referenceSpawnPoint: {fileID: 1256411021}
   creaturePrefab: {fileID: 5279811246306103102, guid: 0fe95cb5b0955ca49984ade707cf1f07, type: 3}
+  deviantPrefab: {fileID: 5279811246306103102, guid: 0fe95cb5b0955ca49984ade707cf1f07, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
