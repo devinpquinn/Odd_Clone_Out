@@ -55,6 +55,7 @@ Assets/Quirky Series Ultimate/_Scripts/
  RotateOnScroll.cs
 Assets/Scripts/
  CreatureSelector.cs
+ CreatureSpawner.cs
  LevelController.cs
  StaggerAnimation.cs
 Assets/TutorialInfo/Scripts/Readme.cs
