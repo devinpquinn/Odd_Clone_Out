@@ -8,9 +8,9 @@ public class CreatureSpawner : MonoBehaviour
     public GameObject creaturePrefab;
     public GameObject deviantPrefab;
     
-    private string tagCreatureReference = "CloneReference";
-    private string tagCreatureNormal = "CloneNormal";
-    private string tagCreatureDeviant = "CloneDeviant";
+    public static string tagCreatureReference = "CloneReference";
+    public static string tagCreatureNormal = "CloneNormal";
+    public static string tagCreatureDeviant = "CloneDeviant";
     
     private void Start()
     {

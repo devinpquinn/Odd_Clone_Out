@@ -25,7 +25,10 @@ public class CreatureSelector : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, creatureLayer))
         {
-            hoveredRenderer = hit.collider.GetComponentInChildren<SkinnedMeshRenderer>();
+            if (!hit.collider.CompareTag(CreatureSpawner.tagCreatureReference))
+            {
+                hoveredRenderer = hit.collider.GetComponentInChildren<SkinnedMeshRenderer>();
+            }
         }
 
         if (hoveredRenderer != _currentOutlined)
