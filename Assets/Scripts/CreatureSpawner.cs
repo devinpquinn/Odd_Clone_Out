@@ -8,6 +8,10 @@ public class CreatureSpawner : MonoBehaviour
     public GameObject creaturePrefab;
     public GameObject deviantPrefab;
     
+    private string tagCreatureReference = "CloneReference";
+    private string tagCreatureNormal = "CloneNormal";
+    private string tagCreatureDeviant = "CloneDeviant";
+    
     private void Start()
     {
         SpawnCreatures();
@@ -21,6 +25,8 @@ public class CreatureSpawner : MonoBehaviour
         Quaternion referenceRotation = referenceSpawnPoint.rotation * Quaternion.Euler(0f, referenceYAngle, 0f);
         GameObject reference = Instantiate(creaturePrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
         reference.name = creaturePrefab.name;
+        
+        reference.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureReference;
 
         foreach (Transform spawnPoint in spawnPoints)
         {
@@ -29,6 +35,14 @@ public class CreatureSpawner : MonoBehaviour
             GameObject prefab = (spawnPoint == deviantSpawnPoint) ? deviantPrefab : creaturePrefab;
             GameObject creature = Instantiate(prefab, spawnPoint.position, rotation, spawnPoint);
             creature.name = prefab.name;
+            if (spawnPoint == deviantSpawnPoint)
+            {
+                creature.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureDeviant;
+            }
+            else
+            {
+                creature.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureNormal;
+            }
         }
     }
 }
