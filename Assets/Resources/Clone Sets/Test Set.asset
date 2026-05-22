@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d036495e53bfb9047b3fa35de042ec17, type: 3}
+  m_Name: Test Set
+  m_EditorClassIdentifier: Assembly-CSharp::CloneSet
+  normalPrefab: {fileID: 5279811246306103102, guid: 0fe95cb5b0955ca49984ade707cf1f07, type: 3}
+  deviantPrefab: {fileID: 6842458599697738422, guid: e18a8a4ed1f506444b51c96eda6d9b37, type: 3}
