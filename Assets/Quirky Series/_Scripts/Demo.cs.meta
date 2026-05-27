@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1552c305f0ec17d479d5bc6339887aa6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 137259
+  packageName: Quirky Series - Animals Mega Pack Vol 1
+  packageVersion: 1.5
+  assetPath: Assets/Quirky Series/_Scripts/Demo.cs
+  uploadId: 881344
