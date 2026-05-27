@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Test Set
   m_EditorClassIdentifier: Assembly-CSharp::CloneSet
   normalPrefab: {fileID: 3421489943700430472, guid: 8b1260435c99c18419610440385afd72, type: 3}
-  deviantPrefab: {fileID: 6842458599697738422, guid: e18a8a4ed1f506444b51c96eda6d9b37, type: 3}
+  deviantPrefab: {fileID: 8203140888846916369, guid: 7edbc65fad441e946a44af8a268f6361, type: 3}
