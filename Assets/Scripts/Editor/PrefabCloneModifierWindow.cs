@@ -9,7 +9,7 @@ public class PrefabCloneModifierWindow : EditorWindow
     private const string BaseLayerStateName = "Idle_A";
     private const string ShapeKeyLayerStateName = "Eyes_Blink";
 
-    private GameObject sourcePrefab;
+    private DefaultAsset sourceFolder;
     private DefaultAsset destinationFolder;
 
     [MenuItem("Tools/Prefab Clone Modifier")]
@@ -20,10 +20,10 @@ public class PrefabCloneModifierWindow : EditorWindow
 
     private void OnGUI()
     {
-        EditorGUILayout.LabelField("Clone Prefab And Apply Modifications", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Clone Prefabs And Apply Modifications", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
-        sourcePrefab = (GameObject)EditorGUILayout.ObjectField("Source Prefab", sourcePrefab, typeof(GameObject), false);
+        sourceFolder = (DefaultAsset)EditorGUILayout.ObjectField("Source Folder", sourceFolder, typeof(DefaultAsset), false);
         destinationFolder = (DefaultAsset)EditorGUILayout.ObjectField("Destination Folder", destinationFolder, typeof(DefaultAsset), false);
 
         EditorGUILayout.Space();
@@ -39,13 +39,13 @@ public class PrefabCloneModifierWindow : EditorWindow
 
     private bool CanRun()
     {
-        if (sourcePrefab == null || destinationFolder == null)
+        if (sourceFolder == null || destinationFolder == null)
         {
             return false;
         }
 
-        string prefabPath = AssetDatabase.GetAssetPath(sourcePrefab);
-        if (string.IsNullOrEmpty(prefabPath) || PrefabUtility.GetPrefabAssetType(sourcePrefab) == PrefabAssetType.NotAPrefab)
+        string sourceFolderPath = AssetDatabase.GetAssetPath(sourceFolder);
+        if (!AssetDatabase.IsValidFolder(sourceFolderPath))
         {
             return false;
         }
@@ -56,32 +56,93 @@ public class PrefabCloneModifierWindow : EditorWindow
 
     private void CloneAndModify()
     {
-        string sourcePath = AssetDatabase.GetAssetPath(sourcePrefab);
-        string folderPath = AssetDatabase.GetAssetPath(destinationFolder);
+        string sourceFolderPath = AssetDatabase.GetAssetPath(sourceFolder);
+        string destinationFolderPath = AssetDatabase.GetAssetPath(destinationFolder);
 
-        if (!AssetDatabase.IsValidFolder(folderPath))
+        if (!AssetDatabase.IsValidFolder(sourceFolderPath))
+        {
+            EditorUtility.DisplayDialog("Invalid Source Folder", "Please select a valid source folder inside Assets.", "OK");
+            return;
+        }
+
+        if (!AssetDatabase.IsValidFolder(destinationFolderPath))
         {
             EditorUtility.DisplayDialog("Invalid Folder", "Please select a valid destination folder inside Assets.", "OK");
             return;
         }
 
-        string newPrefabPath = AssetDatabase.GenerateUniqueAssetPath(
-            Path.Combine(folderPath, sourcePrefab.name + ".prefab").Replace("\\", "/"));
+        string[] prefabGuids = AssetDatabase.FindAssets("t:Prefab", new[] { sourceFolderPath });
+        List<string> sourcePrefabPaths = new List<string>();
+        string normalizedSourceFolderPath = sourceFolderPath.Replace("\\", "/");
 
-        if (!AssetDatabase.CopyAsset(sourcePath, newPrefabPath))
+        foreach (string prefabGuid in prefabGuids)
         {
-            EditorUtility.DisplayDialog("Copy Failed", "Could not copy source prefab.", "OK");
+            string prefabPath = AssetDatabase.GUIDToAssetPath(prefabGuid).Replace("\\", "/");
+            string prefabDirectory = Path.GetDirectoryName(prefabPath)?.Replace("\\", "/");
+            if (string.Equals(prefabDirectory, normalizedSourceFolderPath))
+            {
+                sourcePrefabPaths.Add(prefabPath);
+            }
+        }
+
+        if (sourcePrefabPaths.Count == 0)
+        {
+            EditorUtility.DisplayDialog("No Prefabs Found", "No prefabs were found directly in the selected source folder.", "OK");
             return;
         }
 
+        int successCount = 0;
+        int failureCount = 0;
+        string lastCreatedPrefabPath = null;
+
+        foreach (string sourcePrefabPath in sourcePrefabPaths)
+        {
+            string sourcePrefabName = Path.GetFileNameWithoutExtension(sourcePrefabPath);
+            string copiedPrefabPath = AssetDatabase.GenerateUniqueAssetPath(
+                Path.Combine(destinationFolderPath, sourcePrefabName + ".prefab").Replace("\\", "/"));
+
+            if (!AssetDatabase.CopyAsset(sourcePrefabPath, copiedPrefabPath))
+            {
+                Debug.LogError($"Could not copy source prefab: {sourcePrefabPath}");
+                failureCount++;
+                continue;
+            }
+
+            if (TryProcessPrefabCopy(copiedPrefabPath, destinationFolderPath))
+            {
+                successCount++;
+                lastCreatedPrefabPath = copiedPrefabPath;
+            }
+            else
+            {
+                failureCount++;
+            }
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        if (!string.IsNullOrEmpty(lastCreatedPrefabPath))
+        {
+            Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(lastCreatedPrefabPath);
+        }
+
+        EditorUtility.DisplayDialog(
+            "Batch Complete",
+            $"Processed {sourcePrefabPaths.Count} prefab(s).\nSucceeded: {successCount}\nFailed: {failureCount}",
+            "OK");
+    }
+
+    private static bool TryProcessPrefabCopy(string copiedPrefabPath, string outputFolder)
+    {
         GameObject prefabRoot = null;
 
         try
         {
-            prefabRoot = PrefabUtility.LoadPrefabContents(newPrefabPath);
+            prefabRoot = PrefabUtility.LoadPrefabContents(copiedPrefabPath);
 
             RemoveRootComponents(prefabRoot);
-            Animator animator = ConfigureAnimator(prefabRoot, folderPath);
+            Animator animator = ConfigureAnimator(prefabRoot, outputFolder);
             AddStaggerComponents(prefabRoot);
             DeleteLodMeshes(prefabRoot);
             ConfigureMeshLod0(prefabRoot);
@@ -92,17 +153,13 @@ public class PrefabCloneModifierWindow : EditorWindow
             }
 
             EditorUtility.SetDirty(prefabRoot);
-            PrefabUtility.SaveAsPrefabAsset(prefabRoot, newPrefabPath);
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
-
-            EditorUtility.DisplayDialog("Success", "Created modified prefab at:\n" + newPrefabPath, "OK");
-            Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(newPrefabPath);
+            PrefabUtility.SaveAsPrefabAsset(prefabRoot, copiedPrefabPath);
+            return true;
         }
         catch (System.Exception ex)
         {
-            Debug.LogError("Prefab modification failed: " + ex);
-            EditorUtility.DisplayDialog("Error", "Failed to modify prefab. See console for details.", "OK");
+            Debug.LogError($"Prefab modification failed for '{copiedPrefabPath}': {ex}");
+            return false;
         }
         finally
         {
@@ -146,7 +203,7 @@ public class PrefabCloneModifierWindow : EditorWindow
 
         string sourceControllerPath = AssetDatabase.GetAssetPath(sourceController);
         string copiedControllerPath = AssetDatabase.GenerateUniqueAssetPath(
-            Path.Combine(outputFolder, sourceController.name + "_Modified.controller").Replace("\\", "/"));
+            Path.Combine(outputFolder, sourceController.name + ".controller").Replace("\\", "/"));
 
         if (AssetDatabase.CopyAsset(sourceControllerPath, copiedControllerPath))
         {
