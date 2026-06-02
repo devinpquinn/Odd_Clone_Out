@@ -354,8 +354,8 @@ MonoBehaviour:
   rotationEase: 28
   targetCamera: {fileID: 0}
   zoomedSize: 1
-  zoomDuration: 0.1
-  zoomEase: 6
+  zoomDuration: 0.25
+  zoomEase: 12
   panSpeed: 8
 --- !u!4 &374604869
 Transform:
