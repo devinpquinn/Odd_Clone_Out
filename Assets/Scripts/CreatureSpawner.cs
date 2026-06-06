@@ -5,7 +5,7 @@ public class CreatureSpawner : MonoBehaviour
 {
     public List<Transform> spawnPoints;
     public Transform referenceSpawnPoint;
-    public CloneSet activeCloneSet;
+    public Batch activeBatch;
     
     public static string tagCreatureReference = "CloneReference";
     public static string tagCreatureNormal = "CloneNormal";
@@ -22,8 +22,8 @@ public class CreatureSpawner : MonoBehaviour
 
         float referenceYAngle = Random.Range(0, 4) * 90f;
         Quaternion referenceRotation = referenceSpawnPoint.rotation * Quaternion.Euler(0f, referenceYAngle, 0f);
-        GameObject reference = Instantiate(activeCloneSet.normalPrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
-        reference.name = activeCloneSet.normalPrefab.name;
+        GameObject reference = Instantiate(activeBatch.normalPrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
+        reference.name = activeBatch.normalPrefab.name;
         
         reference.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureReference;
 
@@ -31,7 +31,7 @@ public class CreatureSpawner : MonoBehaviour
         {
             float yAngle = Random.Range(0, 4) * 90f;
             Quaternion rotation = spawnPoint.rotation * Quaternion.Euler(0f, yAngle, 0f);
-            GameObject prefab = (spawnPoint == deviantSpawnPoint) ? activeCloneSet.deviantPrefab : activeCloneSet.normalPrefab;
+            GameObject prefab = (spawnPoint == deviantSpawnPoint) ? activeBatch.deviantPrefab : activeBatch.normalPrefab;
             GameObject creature = Instantiate(prefab, spawnPoint.position, rotation, spawnPoint);
             creature.name = prefab.name;
             if (spawnPoint == deviantSpawnPoint)
