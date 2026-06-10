@@ -5,25 +5,114 @@ public class CreatureSpawner : MonoBehaviour
 {
     public List<Transform> spawnPoints;
     public Transform referenceSpawnPoint;
-    public Batch activeBatch;
+    public List<Stage> stages;
     
     public static string tagCreatureReference = "CloneReference";
     public static string tagCreatureNormal = "CloneNormal";
     public static string tagCreatureDeviant = "CloneDeviant";
+
+    private int _currentStageIndex;
+    private int _currentBatchIndex;
+    private bool _isComplete;
     
     private void Start()
     {
-        SpawnCreatures();
+        _currentStageIndex = 0;
+        _currentBatchIndex = 0;
+        _isComplete = false;
+        SpawnCurrentBatch();
     }
     
-    private void SpawnCreatures()
+    public void AdvanceToNextBatch()
+    {
+        if (_isComplete)
+        {
+            return;
+        }
+
+        ClearCurrentBatch();
+
+        if (!MoveToNextBatch())
+        {
+            _isComplete = true;
+            Debug.Log("All stages and batches complete.");
+            return;
+        }
+
+        SpawnCurrentBatch();
+    }
+
+    private bool MoveToNextBatch()
+    {
+        _currentBatchIndex++;
+
+        while (_currentStageIndex < stages.Count)
+        {
+            Stage stage = stages[_currentStageIndex];
+            int stageBatchCount = stage != null && stage.batches != null ? stage.batches.Count : 0;
+
+            if (_currentBatchIndex < stageBatchCount)
+            {
+                return true;
+            }
+
+            _currentStageIndex++;
+            _currentBatchIndex = 0;
+        }
+
+        return false;
+    }
+
+    private void SpawnCurrentBatch()
+    {
+        Batch currentBatch = GetCurrentBatch();
+        if (currentBatch == null)
+        {
+            Debug.LogWarning("No valid batch available to spawn. Check stage and batch assignments.");
+            return;
+        }
+
+        if (spawnPoints == null || spawnPoints.Count == 0 || referenceSpawnPoint == null)
+        {
+            Debug.LogWarning("Spawner is missing spawn points or reference spawn point.");
+            return;
+        }
+
+        SpawnCreatures(currentBatch);
+    }
+
+    private Batch GetCurrentBatch()
+    {
+        while (_currentStageIndex < stages.Count)
+        {
+            Stage stage = stages[_currentStageIndex];
+            if (stage == null || stage.batches == null || stage.batches.Count == 0)
+            {
+                _currentStageIndex++;
+                _currentBatchIndex = 0;
+                continue;
+            }
+
+            if (_currentBatchIndex < stage.batches.Count)
+            {
+                return stage.batches[_currentBatchIndex];
+            }
+
+            _currentStageIndex++;
+            _currentBatchIndex = 0;
+        }
+
+        return null;
+    }
+
+    private void SpawnCreatures(Batch batch)
     {
         Transform deviantSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 
         float referenceYAngle = Random.Range(0, 4) * 90f;
         Quaternion referenceRotation = referenceSpawnPoint.rotation * Quaternion.Euler(0f, referenceYAngle, 0f);
-        GameObject reference = Instantiate(activeBatch.normalPrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
-        reference.name = activeBatch.normalPrefab.name;
+        GameObject reference = Instantiate(batch.normalPrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
+        reference.name = batch.normalPrefab.name;
         
         reference.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureReference;
 
@@ -31,7 +120,7 @@ public class CreatureSpawner : MonoBehaviour
         {
             float yAngle = Random.Range(0, 4) * 90f;
             Quaternion rotation = spawnPoint.rotation * Quaternion.Euler(0f, yAngle, 0f);
-            GameObject prefab = (spawnPoint == deviantSpawnPoint) ? activeBatch.deviantPrefab : activeBatch.normalPrefab;
+            GameObject prefab = (spawnPoint == deviantSpawnPoint) ? batch.deviantPrefab : batch.normalPrefab;
             GameObject creature = Instantiate(prefab, spawnPoint.position, rotation, spawnPoint);
             creature.name = prefab.name;
             if (spawnPoint == deviantSpawnPoint)
@@ -42,6 +131,29 @@ public class CreatureSpawner : MonoBehaviour
             {
                 creature.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureNormal;
             }
+        }
+    }
+
+    private void ClearCurrentBatch()
+    {
+        ClearChildren(referenceSpawnPoint);
+
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            ClearChildren(spawnPoint);
+        }
+    }
+
+    private void ClearChildren(Transform parent)
+    {
+        if (parent == null)
+        {
+            return;
+        }
+
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(parent.GetChild(i).gameObject);
         }
     }
 }

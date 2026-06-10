@@ -6,6 +6,8 @@ public class CreatureSelector : MonoBehaviour
     private string creatureLayerName = "Creature";
     private string outlineLayerName = "Outline";
 
+    [SerializeField] private CreatureSpawner creatureSpawner;
+
     private Camera _mainCamera;
     private SkinnedMeshRenderer _currentOutlined;
     private uint _outlineMask;
@@ -14,13 +16,17 @@ public class CreatureSelector : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _outlineMask = RenderingLayerMask.GetMask(outlineLayerName);
+
+        if (creatureSpawner == null)
+        {
+            creatureSpawner = FindObjectOfType<CreatureSpawner>();
+        }
     }
 
     private void Update()
     {
         Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         int creatureLayerMask = LayerMask.GetMask(creatureLayerName);
-        int creatureLayer = LayerMask.NameToLayer(creatureLayerName);
 
         SkinnedMeshRenderer hoveredRenderer = null;
 
@@ -53,6 +59,8 @@ public class CreatureSelector : MonoBehaviour
 
             if (creatureCollider != null)
             {
+                bool isDeviant = creatureCollider.CompareTag(CreatureSpawner.tagCreatureDeviant);
+
                 if (creatureCollider.CompareTag(CreatureSpawner.tagCreatureDeviant))
                 {
                     Debug.Log("Clicked creature: Deviant clone");
@@ -62,15 +70,23 @@ public class CreatureSelector : MonoBehaviour
                     Debug.Log("Clicked creature: Normal clone");
                 }
 
-                GameObject creatureRoot = GetCreatureRoot(_currentOutlined.gameObject, creatureLayer);
                 _currentOutlined.renderingLayerMask &= ~_outlineMask;
                 _currentOutlined = null;
-                creatureRoot.SetActive(false);
+
+                if (isDeviant && creatureSpawner != null)
+                {
+                    creatureSpawner.AdvanceToNextBatch();
+                }
+                else if (!isDeviant)
+                {
+                    GameObject creatureRoot = GetCreatureRoot(creatureCollider.gameObject);
+                    creatureRoot.SetActive(false);
+                }
             }
         }
     }
 
-    private GameObject GetCreatureRoot(GameObject source, int creatureLayer)
+    private GameObject GetCreatureRoot(GameObject source)
     {
         Transform current = source.transform;
         while (current.parent != null && current.parent.gameObject.tag != "SpawnPoint")

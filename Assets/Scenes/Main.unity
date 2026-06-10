@@ -352,7 +352,7 @@ MonoBehaviour:
   platform: {fileID: 1335439482}
   rotationDuration: 0.5
   rotationEase: 28
-  targetCamera: {fileID: 0}
+  targetCamera: {fileID: 330585545}
   zoomedSize: 1
   zoomDuration: 0.25
   zoomEase: 12
@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0d60ecb82496446b1e7e34eecb82b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSelector
+  creatureSpawner: {fileID: 0}
 --- !u!114 &374604871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +407,8 @@ MonoBehaviour:
   - {fileID: 1003808942}
   - {fileID: 1259112827}
   referenceSpawnPoint: {fileID: 1256411021}
-  activeBatch: {fileID: 11400000, guid: 098a8b48bf87ad54d9f564e78426c569, type: 2}
+  stages:
+  - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
