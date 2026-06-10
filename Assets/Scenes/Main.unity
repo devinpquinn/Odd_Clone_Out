@@ -406,7 +406,7 @@ MonoBehaviour:
   - {fileID: 1003808942}
   - {fileID: 1259112827}
   referenceSpawnPoint: {fileID: 1256411021}
-  activeBatch: {fileID: 11400000, guid: ef3a2c65bf867344794f1d7836de08e9, type: 2}
+  activeBatch: {fileID: 11400000, guid: 098a8b48bf87ad54d9f564e78426c569, type: 2}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
