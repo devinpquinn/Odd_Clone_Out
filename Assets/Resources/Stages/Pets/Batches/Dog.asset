@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d036495e53bfb9047b3fa35de042ec17, type: 3}
   m_Name: Dog
   m_EditorClassIdentifier: Assembly-CSharp::CloneSet
-  normalPrefab: {fileID: 2218649907829803684, guid: e6799dabefe2d004d967217a2fff24d8, type: 3}
-  deviantPrefab: {fileID: 2218649907829803684, guid: 83870ec3fcbaa9c40950c5dccc19e0c7, type: 3}
+  normalPrefab: {fileID: 3024456958393611686, guid: e73cf3940da6d0f479d8f01e184d2fb8, type: 3}
+  deviantPrefab: {fileID: 3024456958393611686, guid: 65bdf7d8e6d37a84985f44c0b1c1f29b, type: 3}

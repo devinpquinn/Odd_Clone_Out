@@ -1,9 +1,18 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class LevelController : MonoBehaviour
 {
+    public enum RotationDirection
+    {
+        Clockwise,
+        CounterClockwise
+    }
+
+    public static event Action<RotationDirection> RotationStarted;
+
     [Header("Platform Rotation")]
     public Transform platform;
     public float rotationDuration = 0.5f;
@@ -72,6 +81,7 @@ public class LevelController : MonoBehaviour
     public void RotateClockwise()
     {
         if (_rotateTween != null && _rotateTween.IsActive() && _rotateTween.IsPlaying()) return;
+        RotationStarted?.Invoke(RotationDirection.Clockwise);
         _currentYRotation += 90f;
         RotatePlatformTo(_currentYRotation);
     }
@@ -79,6 +89,7 @@ public class LevelController : MonoBehaviour
     public void RotateCounterClockwise()
     {
         if (_rotateTween != null && _rotateTween.IsActive() && _rotateTween.IsPlaying()) return;
+        RotationStarted?.Invoke(RotationDirection.CounterClockwise);
         _currentYRotation -= 90f;
         RotatePlatformTo(_currentYRotation);
     }
