@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RotationListener : MonoBehaviour
 {
+	public UnityEvent onClockwiseRotation;
+	public UnityEvent onCounterClockwiseRotation;
+
 	private void OnEnable()
 	{
 		LevelController.RotationStarted += HandleRotationStarted;
@@ -16,10 +20,10 @@ public class RotationListener : MonoBehaviour
 	{
 		if (direction == LevelController.RotationDirection.Clockwise)
 		{
-			Debug.Log("Rotating Clockwise");
+			onClockwiseRotation.Invoke();
 			return;
 		}
 
-		Debug.Log("Rotating Counter-Clockwise");
+		onCounterClockwiseRotation.Invoke();
 	}
 }

@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3906775624217317000}
   - component: {fileID: 1347239997192036018}
   - component: {fileID: 5500381974188565309}
+  - component: {fileID: 7560168076464369441}
   m_Layer: 0
   m_Name: Dog_Odd
   m_TagString: Untagged
@@ -225,6 +226,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b709bd1514163e4ca241b0bbf03100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotationListener
+  onClockwiseRotation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7560168076464369441}
+        m_TargetAssemblyTypeName: ResistRotation, Assembly-CSharp
+        m_MethodName: OnLevelRotatedClockwise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onCounterClockwiseRotation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7560168076464369441}
+        m_TargetAssemblyTypeName: ResistRotation, Assembly-CSharp
+        m_MethodName: OnLevelRotatedCounterClockwise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7560168076464369441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024456958393611686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74eb457c0f9362043ae754edd97d8478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResistRotation
+  target: {fileID: 3024456958393611685}
+  stepDegrees: 90
+  duration: 0.75
+  ease: 28
 --- !u!1 &3024456959084379186
 GameObject:
   m_ObjectHideFlags: 0
