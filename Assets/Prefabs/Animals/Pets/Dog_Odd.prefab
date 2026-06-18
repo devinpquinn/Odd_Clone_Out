@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResistRotation
   target: {fileID: 3024456958393611685}
   stepDegrees: 90
-  duration: 0.75
+  duration: 1
   ease: 28
 --- !u!1 &3024456959084379186
 GameObject:
