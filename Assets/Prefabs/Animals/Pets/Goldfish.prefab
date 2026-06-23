@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a35bf8f3033a8439e78a5eec3655c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaggerAnimation
-  clipName: Bounce
+  clipName: Splash
   layer: 0
 --- !u!114 &8099081528648307237
 MonoBehaviour:
