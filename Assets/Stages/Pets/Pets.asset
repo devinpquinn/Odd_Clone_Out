@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pets
   m_EditorClassIdentifier: Assembly-CSharp::Stage
   batches:
-  - {fileID: 11400000, guid: 75fe43ecb9448674da671b44eaf7a8bb, type: 2}
   - {fileID: 11400000, guid: 12d646de743348a4aa2ad5a43256ebfa, type: 2}
   - {fileID: 11400000, guid: ef3a2c65bf867344794f1d7836de08e9, type: 2}
   - {fileID: 11400000, guid: 60585dd85cd002047a03ced1b1c947c7, type: 2}
+  - {fileID: 11400000, guid: 75fe43ecb9448674da671b44eaf7a8bb, type: 2}
   - {fileID: 11400000, guid: 098a8b48bf87ad54d9f564e78426c569, type: 2}
   - {fileID: 11400000, guid: a1cae9b03e9a47846bd20be1c166a7a3, type: 2}
