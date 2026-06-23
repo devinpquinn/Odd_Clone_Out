@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieAfterWait
   anim: {fileID: 8561545608390268211}
-  waitTime: 3
+  waitTime: 10
 --- !u!1 &8561545609209249259
 GameObject:
   m_ObjectHideFlags: 0
