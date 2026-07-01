@@ -42,6 +42,43 @@ public class CreatureSpawner : MonoBehaviour
         SpawnCurrentBatch();
     }
 
+    public bool JumpToBatch(int stageIndex, int batchIndex)
+    {
+        if (stages == null || stages.Count == 0)
+        {
+            Debug.LogWarning("Cannot jump: stages list is empty.");
+            return false;
+        }
+
+        if (stageIndex < 0 || stageIndex >= stages.Count)
+        {
+            Debug.LogWarning($"Cannot jump: stage index {stageIndex} is out of range.");
+            return false;
+        }
+
+        Stage stage = stages[stageIndex];
+        if (stage == null || stage.batches == null || stage.batches.Count == 0)
+        {
+            Debug.LogWarning($"Cannot jump: stage at index {stageIndex} has no batches.");
+            return false;
+        }
+
+        if (batchIndex < 0 || batchIndex >= stage.batches.Count)
+        {
+            Debug.LogWarning($"Cannot jump: batch index {batchIndex} is out of range for stage '{stage.name}'.");
+            return false;
+        }
+
+        ClearCurrentBatch();
+
+        _currentStageIndex = stageIndex;
+        _currentBatchIndex = batchIndex;
+        _isComplete = false;
+
+        SpawnCurrentBatch();
+        return true;
+    }
+
     private bool MoveToNextBatch()
     {
         _currentBatchIndex++;
