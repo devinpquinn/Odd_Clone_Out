@@ -79,7 +79,7 @@ public class DebugMenuController : MonoBehaviour
             GameObject stageObject = Instantiate(debugStageObjPrefab, debugMenuParent);
             stageObject.name = stage.name;
 
-            Transform headerTransform = stageObject.transform.Find(StageHeaderName);
+            Transform headerTransform = stageObject.transform.GetChild(0).Find(StageHeaderName);
             if (headerTransform != null)
             {
                 TMP_Text headerText = headerTransform.GetComponent<TMP_Text>();
