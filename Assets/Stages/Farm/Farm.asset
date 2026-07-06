@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5756672cd7cd4469fdc75462552d89, type: 3}
   m_Name: Farm
   m_EditorClassIdentifier: Assembly-CSharp::Stage
-  batches: []
+  batches:
+  - {fileID: 11400000, guid: e5c4b422960ce5642ae2e68016fdfbcb, type: 2}
