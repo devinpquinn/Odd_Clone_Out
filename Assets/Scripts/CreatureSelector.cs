@@ -11,26 +11,22 @@ public class CreatureSelector : MonoBehaviour
     private Camera _mainCamera;
     private SkinnedMeshRenderer _currentOutlined;
     private uint _outlineMask;
+    private int _creatureLayerMask;
 
     private void Start()
     {
         _mainCamera = Camera.main;
         _outlineMask = RenderingLayerMask.GetMask(outlineLayerName);
-
-        if (creatureSpawner == null)
-        {
-            creatureSpawner = FindObjectOfType<CreatureSpawner>();
-        }
+        _creatureLayerMask = LayerMask.GetMask(creatureLayerName);
     }
 
     private void Update()
     {
         Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        int creatureLayerMask = LayerMask.GetMask(creatureLayerName);
 
         SkinnedMeshRenderer hoveredRenderer = null;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, creatureLayerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _creatureLayerMask))
         {
             if (!hit.collider.CompareTag(CreatureSpawner.tagCreatureReference))
             {
