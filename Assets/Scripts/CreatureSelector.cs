@@ -41,12 +41,28 @@ public class CreatureSelector : MonoBehaviour
         if (hoveredRenderer != _currentOutlined)
         {
             if (_currentOutlined != null)
+            {
                 _currentOutlined.renderingLayerMask &= ~_outlineMask;
+                
+                CreatureHoverHandler hoverHandler = _currentOutlined.GetComponent<CreatureHoverHandler>();
+                if(hoverHandler)
+                {
+                    hoverHandler.EndHover();
+                }
+            } 
 
             _currentOutlined = hoveredRenderer;
 
             if (_currentOutlined != null)
+            {
                 _currentOutlined.renderingLayerMask |= _outlineMask;
+                
+                CreatureHoverHandler hoverHandler = _currentOutlined.GetComponent<CreatureHoverHandler>();
+                if(hoverHandler)
+                {
+                    hoverHandler.StartHover();
+                }
+            }  
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame && _currentOutlined != null)
