@@ -5283,6 +5283,7 @@ GameObject:
   - component: {fileID: 6885037742315929923}
   - component: {fileID: 8709348688893223823}
   - component: {fileID: 1933784677241505212}
+  - component: {fileID: 3445014952400362348}
   m_Layer: 0
   m_Name: Donkey_Odd
   m_TagString: Untagged
@@ -5358,6 +5359,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaggerAnimation
   clipName: Eyes_Blink
   layer: 1
+--- !u!114 &3445014952400362348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885037742315929921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8101e605b410642498a3bf536200e833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomFarter
+  fartObject: {fileID: 8128009070662320239}
+  minFartWait: 6
+  maxFartWait: 12
 --- !u!1 &7267281292208285007
 GameObject:
   m_ObjectHideFlags: 0
