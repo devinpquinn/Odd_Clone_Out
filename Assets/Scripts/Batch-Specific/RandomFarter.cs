@@ -9,6 +9,8 @@ public class RandomFarter : MonoBehaviour
     public float maxFartWait = 15f;
     public AudioSource fartAudioSource;
     public List<AudioClip> fartAudioClips;
+
+    private int lastFartIndex = -1;
     
     private void Start()
     {
@@ -26,8 +28,15 @@ public class RandomFarter : MonoBehaviour
             fartObject.SetActive(false);
             fartObject.SetActive(true);
             
-            AudioClip randomFartClip = fartAudioClips[Random.Range(0, fartAudioClips.Count)];
-            fartAudioSource.PlayOneShot(randomFartClip);
+            int fartIndex;
+            do
+            {
+                fartIndex = Random.Range(0, fartAudioClips.Count);
+            } 
+            while (fartAudioClips.Count > 1 && fartIndex == lastFartIndex);
+            
+            lastFartIndex = fartIndex;
+            fartAudioSource.PlayOneShot(fartAudioClips[fartIndex]);
         }
     }
     
