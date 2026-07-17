@@ -118,7 +118,7 @@ Material:
     - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Emission: 1
+    - _Emission: 0.5
     - _EnvironmentReflections: 1
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
