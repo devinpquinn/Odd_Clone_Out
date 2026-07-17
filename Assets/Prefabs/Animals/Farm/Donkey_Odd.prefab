@@ -1133,7 +1133,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0
+      time: 0.1
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -5373,8 +5373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomFarter
   fartObject: {fileID: 8128009070662320239}
-  minFartWait: 3
-  maxFartWait: 5
+  minFartWait: 12
+  maxFartWait: 24
   fartAudioSource: {fileID: 7511635306787996282}
   fartAudioClips:
   - {fileID: 8300000, guid: 388185d53491e97439f48e15792f19f2, type: 3}
@@ -6554,7 +6554,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0.025
+      time: 0.125
       countCurve:
         serializedVersion: 2
         minMaxState: 0
