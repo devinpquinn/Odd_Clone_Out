@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 1393227936728484736}
   - component: {fileID: 3751451012818978469}
   m_Layer: 3
-  m_Name: CloudExplosionSub
+  m_Name: FartCloudSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -326,8 +326,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 20
-      minScalar: 5
+      scalar: 25
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1137,7 +1137,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 12
         minScalar: 20
         maxCurve:
           serializedVersion: 2
@@ -5051,6 +5051,38 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &4218887309213270638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2511864829118525835}
+  m_Layer: 3
+  m_Name: FartSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2511864829118525835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218887309213270638}
+  serializedVersion: 2
+  m_LocalRotation: {x: -1.323489e-23, y: -1, z: -0, w: 3.3087225e-23}
+  m_LocalPosition: {x: -0, y: 0, z: -0.0055}
+  m_LocalScale: {x: 0.005, y: 0.0050000004, z: 0.0050000004}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7846058405770917189}
+  m_Father: {fileID: 4548770408690586164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4669273314939836967
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,7 +5424,7 @@ Transform:
   - {fileID: 2319775080183777887}
   - {fileID: 3257473358750395099}
   - {fileID: 2961963507228747975}
-  - {fileID: 7846058405770917189}
+  - {fileID: 2511864829118525835}
   m_Father: {fileID: 4195615140692272728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7593222657981431462
@@ -5470,7 +5502,7 @@ GameObject:
   - component: {fileID: 5892763512474490654}
   - component: {fileID: 8687704762352858233}
   m_Layer: 3
-  m_Name: CloudExplosion
+  m_Name: FartCloudBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5484,13 +5516,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8128009070662320239}
   serializedVersion: 2
-  m_LocalRotation: {x: -1.323489e-23, y: -1, z: -0, w: 3.3087225e-23}
-  m_LocalPosition: {x: -0, y: 0, z: -0.0055}
-  m_LocalScale: {x: 0.005, y: 0.0050000004, z: 0.0050000004}
+  m_LocalRotation: {x: -0, y: 1.323489e-23, z: -1.9852335e-23, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3731387733917113971}
-  m_Father: {fileID: 4548770408690586164}
+  m_Father: {fileID: 2511864829118525835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &5892763512474490654
 ParticleSystem:
@@ -5509,7 +5541,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
