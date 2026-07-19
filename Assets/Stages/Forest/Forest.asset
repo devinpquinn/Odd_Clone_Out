@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Stage
   batches:
   - {fileID: 11400000, guid: 5b9aa68fbfe067f46921e9427f582d85, type: 2}
+  - {fileID: 11400000, guid: 2b78d9a738f4ab347b6df4604f77b5e8, type: 2}

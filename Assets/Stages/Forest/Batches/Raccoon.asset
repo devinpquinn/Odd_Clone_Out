@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d036495e53bfb9047b3fa35de042ec17, type: 3}
-  m_Name: Crow
+  m_Name: Raccoon
   m_EditorClassIdentifier: Assembly-CSharp::Batch
-  normalPrefab: {fileID: 3843018394601340397, guid: a68a7f2623f0e3342830f4c9a82e1492, type: 3}
-  deviantPrefab: {fileID: 3843018394601340397, guid: 6e39da3901edf734a94f269b6c748cf1, type: 3}
+  normalPrefab: {fileID: 8516068087605710294, guid: 86624d572c121c0488cfbd1728d2caf0, type: 3}
+  deviantPrefab: {fileID: 8516068087605710294, guid: 9ea41c2e10d09944d8c2a5e465268823, type: 3}
