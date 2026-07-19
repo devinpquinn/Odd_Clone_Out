@@ -8,12 +8,12 @@ public class ZoomListener : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelController.ZoomChanged += HandleZoomChanged;
+        LevelController.ZoomStarted += HandleZoomChanged;
     }
 
     private void OnDisable()
     {
-        LevelController.ZoomChanged -= HandleZoomChanged;
+        LevelController.ZoomStarted -= HandleZoomChanged;
     }
 
     private void HandleZoomChanged(LevelController.ZoomDirection direction)

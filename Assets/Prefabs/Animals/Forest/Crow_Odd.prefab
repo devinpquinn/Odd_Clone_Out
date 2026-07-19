@@ -457,7 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZoomRotation
   target: {fileID: 3843018394601340394}
   zoomedWorldEuler: {x: 0, y: 45, z: 0}
-  duration: 1
+  duration: 0.25
   ease: 28
 --- !u!1 &4852638751185229979
 GameObject:

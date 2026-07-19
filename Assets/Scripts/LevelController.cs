@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour
     }
 
     public static event Action<RotationDirection> RotationStarted;
-    public static event Action<ZoomDirection> ZoomChanged;
+    public static event Action<ZoomDirection> ZoomStarted;
 
     [Header("Platform Rotation")]
     public Transform platform;
@@ -56,7 +56,7 @@ public class LevelController : MonoBehaviour
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             _isZoomed = true;
-            ZoomChanged?.Invoke(ZoomDirection.ZoomIn);
+            ZoomStarted?.Invoke(ZoomDirection.ZoomIn);
             _zoomTween?.Kill();
             _zoomTween = targetCamera.DOOrthoSize(zoomedSize, zoomDuration).SetEase(zoomEase);
             _moveTween?.Kill();
@@ -67,7 +67,7 @@ public class LevelController : MonoBehaviour
         else if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
             _isZoomed = false;
-            ZoomChanged?.Invoke(ZoomDirection.ZoomOut);
+            ZoomStarted?.Invoke(ZoomDirection.ZoomOut);
             _zoomTween?.Kill();
             _zoomTween = targetCamera.DOOrthoSize(_defaultSize, zoomDuration).SetEase(zoomEase);
             _moveTween?.Kill();
