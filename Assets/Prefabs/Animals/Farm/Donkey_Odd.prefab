@@ -5373,8 +5373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomFarter
   fartObject: {fileID: 8128009070662320239}
-  minFartWait: 12
-  maxFartWait: 24
+  minFartWait: 9
+  maxFartWait: 18
   fartAudioSource: {fileID: 7511635306787996282}
   fartAudioClips:
   - {fileID: 8300000, guid: 388185d53491e97439f48e15792f19f2, type: 3}

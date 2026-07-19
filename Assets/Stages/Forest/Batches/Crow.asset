@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d036495e53bfb9047b3fa35de042ec17, type: 3}
   m_Name: Crow
   m_EditorClassIdentifier: Assembly-CSharp::Batch
-  normalPrefab: {fileID: 3843018394601340397, guid: a68a7f2623f0e3342830f4c9a82e1492, type: 3}
-  deviantPrefab: {fileID: 3843018394601340397, guid: 6e39da3901edf734a94f269b6c748cf1, type: 3}
+  normalPrefab: {fileID: 3843018394601340397, guid: 6e39da3901edf734a94f269b6c748cf1, type: 3}
+  deviantPrefab: {fileID: 3843018394601340397, guid: a68a7f2623f0e3342830f4c9a82e1492, type: 3}
