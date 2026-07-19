@@ -325,6 +325,8 @@ GameObject:
   - component: {fileID: 3843018394601340392}
   - component: {fileID: 7561985369454699891}
   - component: {fileID: 2021831698163095214}
+  - component: {fileID: 6381815086148895185}
+  - component: {fileID: 6311096491969697398}
   m_Layer: 0
   m_Name: Crow_Odd
   m_TagString: Untagged
@@ -399,6 +401,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaggerAnimation
   clipName: Eyes_Blink
   layer: 1
+--- !u!114 &6381815086148895185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3843018394601340397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6538364f37fd7a94793e95dfc7db11a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoomListener
+  onZoomIn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6311096491969697398}
+        m_TargetAssemblyTypeName: ZoomRotation, Assembly-CSharp
+        m_MethodName: ZoomInRotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onZoomOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6311096491969697398}
+        m_TargetAssemblyTypeName: ZoomRotation, Assembly-CSharp
+        m_MethodName: ZoomOutRotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6311096491969697398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3843018394601340397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a22fd92232c8f645845ff4f5da1a042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoomRotation
+  target: {fileID: 3843018394601340394}
+  zoomedWorldEuler: {x: 0, y: 45, z: 0}
+  duration: 1
+  ease: 28
 --- !u!1 &4852638751185229979
 GameObject:
   m_ObjectHideFlags: 0
