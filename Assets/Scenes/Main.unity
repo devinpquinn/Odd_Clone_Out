@@ -470,8 +470,8 @@ MonoBehaviour:
   - {fileID: 1259112827}
   referenceSpawnPoint: {fileID: 1256411021}
   stages:
-  - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
   - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
+  - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,8 +1920,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugMenuController
   stages:
-  - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
   - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
+  - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
   creatureSpawner: {fileID: 374604871}
   debugMenuParent: {fileID: 324561942}
   debugStageObjPrefab: {fileID: 7831968290923336010, guid: fc6067c492d22f6408c35ef37f2eeff3, type: 3}
