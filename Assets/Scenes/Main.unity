@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 374604868}
   - component: {fileID: 374604871}
   - component: {fileID: 374604870}
+  - component: {fileID: 374604872}
   m_Layer: 0
   m_Name: MANAGER
   m_TagString: Untagged
@@ -470,9 +471,29 @@ MonoBehaviour:
   - {fileID: 1259112827}
   referenceSpawnPoint: {fileID: 1256411021}
   stages:
+  - {fileID: 11400000, guid: 85b7d4aeb3f73974e89de1b2a4a09399, type: 2}
   - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
   - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
+--- !u!114 &374604872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374604867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f5227633252ae4dae36e904ef14af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugMenuController
+  stages:
   - {fileID: 11400000, guid: 85b7d4aeb3f73974e89de1b2a4a09399, type: 2}
+  - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
+  - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
+  creatureSpawner: {fileID: 374604871}
+  debugMenuParent: {fileID: 324561942}
+  debugStageObjPrefab: {fileID: 7831968290923336010, guid: fc6067c492d22f6408c35ef37f2eeff3, type: 3}
+  debugLevelButtonPrefab: {fileID: 4756112104919179742, guid: 0f623838a267e0c4ab66d873aa2645f6, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,7 +1893,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1687576109}
   - component: {fileID: 1687576111}
-  - component: {fileID: 1687576112}
   m_Layer: 5
   m_Name: Debug Menu
   m_TagString: Untagged
@@ -1908,26 +1928,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687576108}
   m_CullTransparentMesh: 1
---- !u!114 &1687576112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687576108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f5227633252ae4dae36e904ef14af5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DebugMenuController
-  stages:
-  - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
-  - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
-  - {fileID: 11400000, guid: 85b7d4aeb3f73974e89de1b2a4a09399, type: 2}
-  creatureSpawner: {fileID: 374604871}
-  debugMenuParent: {fileID: 324561942}
-  debugStageObjPrefab: {fileID: 7831968290923336010, guid: fc6067c492d22f6408c35ef37f2eeff3, type: 3}
-  debugLevelButtonPrefab: {fileID: 4756112104919179742, guid: 0f623838a267e0c4ab66d873aa2645f6, type: 3}
 --- !u!1 &1915084524
 GameObject:
   m_ObjectHideFlags: 0

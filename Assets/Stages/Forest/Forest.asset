@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: Assembly-CSharp::Stage
   batches:
+  - {fileID: 11400000, guid: a651635e30a1e9843b44f3b8c9397c0a, type: 2}
   - {fileID: 11400000, guid: 0c2bf076502b1e84aaf34b7b0285f085, type: 2}
   - {fileID: 11400000, guid: 2b78d9a738f4ab347b6df4604f77b5e8, type: 2}
   - {fileID: 11400000, guid: 5b9aa68fbfe067f46921e9427f582d85, type: 2}
-  - {fileID: 11400000, guid: cb9be897bc8df7f4e898f41d5d3b1061, type: 2}
   - {fileID: 11400000, guid: 9b5868e37814c254c8b7ced3871005af, type: 2}
-  - {fileID: 11400000, guid: a651635e30a1e9843b44f3b8c9397c0a, type: 2}
