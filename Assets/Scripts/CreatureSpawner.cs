@@ -7,6 +7,8 @@ public class CreatureSpawner : MonoBehaviour
     public Transform referenceSpawnPoint;
     public List<Stage> stages;
     
+    public float creatureSizeMult = 1f; // Temporary: scale spawn point; later this will be done with an animation
+    
     public static string tagCreatureReference = "CloneReference";
     public static string tagCreatureNormal = "CloneNormal";
     public static string tagCreatureDeviant = "CloneDeviant";
@@ -146,15 +148,21 @@ public class CreatureSpawner : MonoBehaviour
     {
         Transform deviantSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
 
+        referenceSpawnPoint.localScale = Vector3.one;
+        
         float referenceYAngle = Random.Range(0, 4) * 90f;
         Quaternion referenceRotation = referenceSpawnPoint.rotation * Quaternion.Euler(0f, referenceYAngle, 0f);
         GameObject reference = Instantiate(batch.normalPrefab, referenceSpawnPoint.position, referenceRotation, referenceSpawnPoint);
         reference.name = batch.normalPrefab.name;
         
         reference.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureReference;
+        
+        referenceSpawnPoint.localScale = Vector3.one * creatureSizeMult;
 
         foreach (Transform spawnPoint in spawnPoints)
         {
+            spawnPoint.localScale = Vector3.one;
+        
             float yAngle = Random.Range(0, 4) * 90f;
             Quaternion rotation = spawnPoint.rotation * Quaternion.Euler(0f, yAngle, 0f);
             GameObject prefab = (spawnPoint == deviantSpawnPoint) ? batch.deviantPrefab : batch.normalPrefab;
@@ -168,6 +176,8 @@ public class CreatureSpawner : MonoBehaviour
             {
                 creature.GetComponentInChildren<Collider>().gameObject.tag = tagCreatureNormal;
             }
+            
+            spawnPoint.localScale = Vector3.one * creatureSizeMult;
         }
     }
 
