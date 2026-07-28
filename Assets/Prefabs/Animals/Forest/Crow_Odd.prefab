@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 3843018394601340392}
   - component: {fileID: 7561985369454699891}
   - component: {fileID: 2021831698163095214}
+  - component: {fileID: 8581294764129865464}
   m_Layer: 0
   m_Name: Crow_Odd
   m_TagString: Untagged
@@ -399,6 +400,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaggerAnimation
   clipName: Eyes_Blink
   layer: 1
+--- !u!114 &8581294764129865464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3843018394601340397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e03aa3bd5cd191458823a246e40ee1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MurderHandler
 --- !u!1 &4852638751185229979
 GameObject:
   m_ObjectHideFlags: 0

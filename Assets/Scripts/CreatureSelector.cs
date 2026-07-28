@@ -8,13 +8,19 @@ public class CreatureSelector : MonoBehaviour
 
     [SerializeField] private CreatureSpawner creatureSpawner;
 
+    public bool isLive = true;
+
     private Camera _mainCamera;
     private SkinnedMeshRenderer _currentOutlined;
     private uint _outlineMask;
     private int _creatureLayerMask;
+    
+    public static CreatureSelector Instance { get; private set; }
 
     private void Start()
     {
+        Instance = this;
+    
         _mainCamera = Camera.main;
         _outlineMask = RenderingLayerMask.GetMask(outlineLayerName);
         _creatureLayerMask = LayerMask.GetMask(creatureLayerName);
@@ -24,9 +30,19 @@ public class CreatureSelector : MonoBehaviour
     {
         Ray ray = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
+        if (!isLive && _currentOutlined != null)
+        {
+            _currentOutlined.renderingLayerMask &= ~_outlineMask;
+
+            CreatureHoverHandler hoverHandler = _currentOutlined.GetComponent<CreatureHoverHandler>();
+            if (hoverHandler) hoverHandler.EndHover();
+
+            _currentOutlined = null;
+        }
+
         SkinnedMeshRenderer hoveredRenderer = null;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _creatureLayerMask))
+        if (isLive && Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _creatureLayerMask))
         {
             if (!hit.collider.CompareTag(CreatureSpawner.tagCreatureReference))
             {
@@ -34,7 +50,7 @@ public class CreatureSelector : MonoBehaviour
             }
         }
 
-        if (hoveredRenderer != _currentOutlined)
+        if (isLive && hoveredRenderer != _currentOutlined)
         {
             if (_currentOutlined != null)
             {
@@ -61,7 +77,7 @@ public class CreatureSelector : MonoBehaviour
             }  
         }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame && _currentOutlined != null)
+        if (isLive && Mouse.current.leftButton.wasPressedThisFrame && _currentOutlined != null)
         {
             Collider creatureCollider = _currentOutlined.GetComponentInParent<Collider>();
             if (creatureCollider == null)

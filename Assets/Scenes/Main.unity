@@ -448,6 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSelector
   creatureSpawner: {fileID: 374604871}
+  canOutline: 1
+  canSelect: 1
 --- !u!114 &374604871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,6 +1631,7 @@ GameObject:
   - component: {fileID: 1234528308}
   - component: {fileID: 1234528307}
   - component: {fileID: 1234528306}
+  - component: {fileID: 1234528309}
   m_Layer: 5
   m_Name: FadeScreen
   m_TagString: Untagged
@@ -1705,6 +1708,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234528304}
   m_CullTransparentMesh: 1
+--- !u!114 &1234528309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234528304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd9163f85c60774db6e862ccd465ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeManager
 --- !u!1 &1240009675
 GameObject:
   m_ObjectHideFlags: 0
