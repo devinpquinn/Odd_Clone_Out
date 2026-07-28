@@ -46,9 +46,14 @@ public class ZoomRotation : MonoBehaviour
     {
         if (target == null || !_hasStoredPreviousRotation) return;
 
+        float angle = Quaternion.Angle(target.rotation, _previousWorldRotation);
+        float scaledDuration = angle > largeRotationThreshold
+            ? duration * largeRotationDurationMultiplier
+            : duration;
+
         _rotateTween?.Kill();
         _rotateTween = target
-            .DORotateQuaternion(_previousWorldRotation, duration)
+            .DORotateQuaternion(_previousWorldRotation, scaledDuration)
             .SetEase(ease)
             .OnComplete(() => _hasStoredPreviousRotation = false);
     }
