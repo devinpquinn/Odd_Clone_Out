@@ -12,6 +12,11 @@ public class ZoomRotation : MonoBehaviour
     [SerializeField] private float duration = 0.5f;
     [SerializeField] private Ease ease = Ease.InOutQuad;
 
+    [Header("Large Rotation Scaling")]
+    [Tooltip("If the angle to rotate exceeds this threshold (degrees), multiply the duration.")]
+    [SerializeField] private float largeRotationThreshold = 50f;
+    [SerializeField] private float largeRotationDurationMultiplier = 2f;
+
     private Tween _rotateTween;
     private Quaternion _previousWorldRotation;
     private bool _hasStoredPreviousRotation;
@@ -61,9 +66,15 @@ public class ZoomRotation : MonoBehaviour
 
     private void RotateToWorldEuler(Vector3 worldEuler)
     {
+        Quaternion targetRotation = Quaternion.Euler(worldEuler);
+        float angle = Quaternion.Angle(target.rotation, targetRotation);
+        float scaledDuration = angle > largeRotationThreshold
+            ? duration * largeRotationDurationMultiplier
+            : duration;
+
         _rotateTween?.Kill();
         _rotateTween = target
-            .DORotate(worldEuler, duration, RotateMode.Fast)
+            .DORotate(worldEuler, scaledDuration, RotateMode.Fast)
             .SetEase(ease);
     }
 
