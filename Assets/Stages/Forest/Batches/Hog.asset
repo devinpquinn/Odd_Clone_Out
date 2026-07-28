@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Hog
   m_EditorClassIdentifier: Assembly-CSharp::Batch
   normalPrefab: {fileID: 1961173086779630143, guid: 466f2ca845c650e4891f91e1b533e0e6, type: 3}
-  deviantPrefab: {fileID: 1961173086779630143, guid: 8862e21d088e1ef488743daf103823c9, type: 3}
+  deviantPrefab: {fileID: 1961173086779630143, guid: 5ae21d6941ca4064cba0d4e9b06a77b8, type: 3}

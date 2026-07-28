@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 1961173086779630138}
   - component: {fileID: 2374613990797274197}
   - component: {fileID: 1852114411187151009}
-  - component: {fileID: 7520408863755406672}
-  - component: {fileID: 1314021360158149240}
   m_Layer: 0
   m_Name: Hog_Odd
   m_TagString: Untagged
@@ -88,63 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaggerAnimation
   clipName: Eyes_Blink
   layer: 1
---- !u!114 &7520408863755406672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961173086779630143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b709bd1514163e4ca241b0bbf03100c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RotationListener
-  onClockwiseRotation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1314021360158149240}
-        m_TargetAssemblyTypeName: DizzyHandler, Assembly-CSharp
-        m_MethodName: StartDizzy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onCounterClockwiseRotation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1314021360158149240}
-        m_TargetAssemblyTypeName: DizzyHandler, Assembly-CSharp
-        m_MethodName: StartDizzy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1314021360158149240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961173086779630143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279300c68c3169843bd5694aa45206bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DizzyHandler
-  anim: {fileID: 1961173086779630138}
-  dizzyDelay: 0.25
-  dizzyDuration: 1.5
 --- !u!1 &1961173087069394222
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,36 +184,7 @@ SkinnedMeshRenderer:
   - {fileID: 1821468593959303730}
   - {fileID: 8717128485704448336}
   - {fileID: 4939101652055218059}
-  m_BlendShapeWeights:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  m_BlendShapeWeights: []
   m_RootBone: {fileID: 69648709352355447}
   m_AABB:
     m_Center: {x: 0.0000000013969839, y: -0.00065197074, z: 0.003703596}

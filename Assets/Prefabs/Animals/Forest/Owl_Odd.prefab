@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1211759106378120403}
   - component: {fileID: 8854656642450342454}
   m_Layer: 0
-  m_Name: Owl
+  m_Name: Owl_Odd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
