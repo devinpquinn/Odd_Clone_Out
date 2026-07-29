@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MurderHandler
   waitBeforeMurder: 2
-  murderFadeOutTime: 0.1
+  murderFadeOutTime: 0.05
   murderDuration: 3
   murderFadeInTime: 1
 --- !u!1 &4852638751185229979

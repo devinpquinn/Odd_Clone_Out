@@ -448,8 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureSelector
   creatureSpawner: {fileID: 374604871}
-  canOutline: 1
-  canSelect: 1
+  isLive: 1
 --- !u!114 &374604871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,7 +475,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85b7d4aeb3f73974e89de1b2a4a09399, type: 2}
   - {fileID: 11400000, guid: 1ed5db25dc6fe8948947a1e6d12ba03b, type: 2}
   - {fileID: 11400000, guid: 27815e9c67b3d75489f68f8457b62a49, type: 2}
-  creatureSizeMult: 1.25
+  creatureSizeMult: 1.5
 --- !u!114 &374604872
 MonoBehaviour:
   m_ObjectHideFlags: 0
