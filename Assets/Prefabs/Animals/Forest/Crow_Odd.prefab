@@ -412,6 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e03aa3bd5cd191458823a246e40ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MurderHandler
+  waitBeforeMurder: 2
+  murderFadeOutTime: 0.1
+  murderDuration: 3
+  murderFadeInTime: 1
 --- !u!1 &4852638751185229979
 GameObject:
   m_ObjectHideFlags: 0

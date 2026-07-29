@@ -1,16 +1,50 @@
 using UnityEngine;
+using System.Collections;
 
 public class MurderHandler : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float waitBeforeMurder;
+    public float murderFadeOutTime;
+    public float murderDuration;
+    public float murderFadeInTime;
+
+    private Coroutine murderRoutine;
+
+    private void Start()
     {
-        
+        CreatureSelector.Instance.isLive = false;
+        murderRoutine = StartCoroutine(MurderSequence());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        if (murderRoutine != null)
+        {
+            StopCoroutine(murderRoutine);
+            murderRoutine = null;
+        }
+
+        if (CreatureSelector.Instance != null)
+        {
+            CreatureSelector.Instance.isLive = true;
+        }
+    }
+
+    private IEnumerator MurderSequence()
+    {
+        yield return new WaitForSeconds(waitBeforeMurder);
+
+        FadeManager.FadeTo(1f, Mathf.Max(0f, murderFadeOutTime));
+
+        yield return new WaitForSeconds(murderFadeOutTime);
+
+        yield return new WaitForSeconds(murderDuration);
+
+        FadeManager.FadeTo(0f, Mathf.Max(0f, murderFadeInTime));
+
+        yield return new WaitForSeconds(murderFadeInTime);
+
+        CreatureSelector.Instance.isLive = true;
+        murderRoutine = null;
     }
 }
