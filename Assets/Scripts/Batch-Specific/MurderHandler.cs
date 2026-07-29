@@ -37,6 +37,10 @@ public class MurderHandler : MonoBehaviour
         FadeManager.FadeTo(1f, Mathf.Max(0f, murderFadeOutTime));
 
         yield return new WaitForSeconds(murderFadeOutTime);
+        
+        Animator victimAnim = GameObject.Find("Crow").GetComponent<Animator>();
+        victimAnim.Play("Death", 0, 0f);
+        victimAnim.Play("Eyes_Dead", 1, 0f);
 
         yield return new WaitForSeconds(murderDuration);
 
