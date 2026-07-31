@@ -53,7 +53,9 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        bool zoomInputHeld = IsZoomInputHeld();
+
+        if (zoomInputHeld && !_isZoomed)
         {
             _isZoomed = true;
             ZoomStarted?.Invoke(ZoomDirection.ZoomIn);
@@ -64,7 +66,7 @@ public class LevelController : MonoBehaviour
                 .DOMove(ClampedPanTarget(), zoomDuration)
                 .SetEase(zoomEase);
         }
-        else if (Mouse.current.rightButton.wasReleasedThisFrame)
+            else if (!zoomInputHeld && _isZoomed)
         {
             _isZoomed = false;
             ZoomStarted?.Invoke(ZoomDirection.ZoomOut);
@@ -85,6 +87,13 @@ public class LevelController : MonoBehaviour
                 ClampedPanTarget(),
                 Time.deltaTime * panSpeed);
         }
+    }
+
+    private bool IsZoomInputHeld()
+    {
+        bool rightMouseHeld = Mouse.current != null && Mouse.current.rightButton.isPressed;
+        bool spaceHeld = Keyboard.current != null && Keyboard.current.spaceKey.isPressed;
+        return rightMouseHeld || spaceHeld;
     }
 
     public void RotateClockwise()
