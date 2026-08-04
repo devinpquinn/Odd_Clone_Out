@@ -26,6 +26,8 @@ public class MurderHandler : MonoBehaviour
             StopCoroutine(murderRoutine);
             murderRoutine = null;
         }
+        
+        GameObject.Find("SpecialObjects").transform.GetChild(0).gameObject.SetActive(false);
 
         if (CreatureSelector.Instance != null)
         {
@@ -42,7 +44,11 @@ public class MurderHandler : MonoBehaviour
         yield return new WaitForSeconds(murderFadeOutTime);
         
         if (murdererMesh != null && murdererMurderMesh != null)
+        {
             murdererMesh.sharedMesh = murdererMurderMesh;
+        }
+            
+        GameObject.Find("SpecialObjects").transform.GetChild(0).gameObject.SetActive(true);
 
         Animator victimAnim = GameObject.Find("Crow").GetComponent<Animator>();
         victimAnim.Play("Death", 0, 0f);
