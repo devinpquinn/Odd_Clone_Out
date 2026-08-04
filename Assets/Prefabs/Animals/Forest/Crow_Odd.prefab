@@ -416,6 +416,8 @@ MonoBehaviour:
   murderFadeOutTime: 0.05
   murderDuration: 3
   murderFadeInTime: 1
+  murdererMesh: {fileID: 3843018392990666416}
+  murdererMurderMesh: {fileID: -5523277661179574252, guid: 529227ab09c63d84e80e30a69fdfe8dc, type: 3}
 --- !u!1 &4852638751185229979
 GameObject:
   m_ObjectHideFlags: 0

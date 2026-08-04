@@ -7,6 +7,9 @@ public class MurderHandler : MonoBehaviour
     public float murderFadeOutTime;
     public float murderDuration;
     public float murderFadeInTime;
+    
+    public SkinnedMeshRenderer murdererMesh;
+    public Mesh murdererMurderMesh;
 
     private Coroutine murderRoutine;
 
@@ -38,6 +41,9 @@ public class MurderHandler : MonoBehaviour
 
         yield return new WaitForSeconds(murderFadeOutTime);
         
+        if (murdererMesh != null && murdererMurderMesh != null)
+            murdererMesh.sharedMesh = murdererMurderMesh;
+
         Animator victimAnim = GameObject.Find("Crow").GetComponent<Animator>();
         victimAnim.Play("Death", 0, 0f);
         victimAnim.Play("Eyes_Dead", 1, 0f);
